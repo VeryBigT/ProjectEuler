@@ -1,12 +1,11 @@
 package common.util;
 
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
-
-public class Math {
+public class MathUtil {
     public static int pow(int base, int exp) {
-        return IntStream.range(0, exp)
-                .reduce(1, (a,b) -> a * base);
+        int result = 1;
+        while(exp-- > 0)
+            result *= base;
+        return result;
     }
 
     public static int powOfTwo(int exp) {
@@ -18,8 +17,10 @@ public class Math {
     }
 
     public static long pow(long base, long exp) {
-        return LongStream.range(0L, exp)
-                .reduce(1L, (a,b) -> a * base);
+        long result = 1L;
+        while(exp-- > 0L)
+            result *= base;
+        return result;
     }
 
     public static long powOfTwo(long exp) {
