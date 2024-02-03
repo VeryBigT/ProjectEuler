@@ -2,9 +2,6 @@ package problems;
 
 import common.Problem;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Solution for <a href="https://projecteuler.net/problem=33">Problem 33</a>
  * from <a href="https://projecteuler.net/">Project Euler</a>
