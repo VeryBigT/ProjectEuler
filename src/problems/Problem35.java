@@ -1,8 +1,11 @@
 package problems;
 
 import common.Problem;
+import static common.util.MathUtil.*;
+import static problems.Problem10.*;
 
 import java.util.Arrays;
+import static java.lang.Math.*;
 
 /**
  * Solution for <a href="https://projecteuler.net/problem=35">Problem 35</a>
@@ -26,7 +29,7 @@ public class Problem35 extends Problem {
     int[] primes;
 
     private int numOfCircularPrimesBelow(int max) {
-        primes = Problem10.allPrimesSmallerThan(max * 10);
+        primes = allPrimesSmallerThan(powOfTen((int) log10(max)));
         return (int) Arrays.stream(primes)
                 .takeWhile(prime -> prime < max)
                 .filter(this::isCircularPrime)
