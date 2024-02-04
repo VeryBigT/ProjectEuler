@@ -25,13 +25,16 @@ public class Problem36 extends Problem {
 
     @Override
     protected void solve() {
-        System.out.println(sumOfAllPalindromesInBases(2, 10));
+        //(10,2) results in a faster runtime than (2,10) as there
+        //are less palindroms in base 10
+        System.out.println(sumOfAllPalindromesInBases(10, 2));
+        //System.out.println(sumOfAllPalindromesInBases(2, 10));
     }
 
     private int sumOfAllPalindromesInBases(int... bases) {
         return IntStream.range(1, 1_000_000)
                 .filter(i -> IntStream.of(bases)
-                        .allMatch(b -> isPalindromeInBase(i, b)))
+                        .allMatch(b -> isPalindromeInBaseRevInt(i, b)))
                 //.peek(System.out::println)
                 .sum();
     }
@@ -55,5 +58,20 @@ public class Problem36 extends Problem {
             left /= base2;
         }
         return true;
+    }
+
+    //slower than isPalindromeInBase()
+    private boolean isPalindromeInBaseRevInt(int i, int base) {
+        return i == reverseInt(i, base);
+    }
+
+    private int reverseInt(int i, int base) {
+        int result = 0;
+        while(i > 0) {
+            result *= base;
+            result += i % base;
+            i /= base;
+        }
+        return result;
     }
 }

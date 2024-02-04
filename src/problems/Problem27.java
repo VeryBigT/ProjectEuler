@@ -1,6 +1,7 @@
 package problems;
 
 import common.Problem;
+import common.util.MathUtil;
 
 import java.util.Arrays;
 
@@ -15,7 +16,7 @@ public class Problem27 extends Problem {
 
     @Override
     protected void solveSimple() {
-        int[] primes = Problem10.allPrimesSmallerThan(2_000);
+        int[] primes = MathUtil.allPrimesSmallerThan(2_000);
         System.out.println(numberOfPrimes(primes, 1, 41));
         System.out.println(numberOfPrimes(primes, -79, 1601));
     }
@@ -26,7 +27,7 @@ public class Problem27 extends Problem {
     }
 
     static int maxCoefficientProductOfQuadraticPrimes() {
-        int[] primes = Problem10.allPrimesSmallerThan(2_000);
+        int[] primes = MathUtil.allPrimesSmallerThan(2_000);
         int maxN = 0, maxA = 0, maxB = 0;
         for(int a = -999; a < 1000; a += 2) {
             for(int b : primes) {

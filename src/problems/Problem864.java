@@ -1,6 +1,7 @@
 package problems;
 
 import common.Problem;
+import common.util.MathUtil;
 
 import java.util.stream.LongStream;
 
@@ -26,7 +27,7 @@ public class Problem864 extends Problem {
 
     static long C(long max) {
         long result = max;
-        long[] primes = Problem10.allPrimesSmallerThan((long) Math.sqrt(max * max + 1) / 2 + 1); // zu groﬂ!
+        long[] primes = MathUtil.allPrimesSmallerThan((long) Math.sqrt(max * max + 1) / 2 + 1); // zu groﬂ!
         for(long i = 0, squarep1 = 2, odd = 3; i < max; i++, squarep1 += odd, odd += 2) {
             long fSquarep1 = squarep1;
             boolean b = LongStream.of(primes)

@@ -2,7 +2,6 @@ package problems;
 
 import common.Problem;
 import static common.util.MathUtil.*;
-import static problems.Problem10.*;
 
 import java.util.Arrays;
 import static java.lang.Math.*;
