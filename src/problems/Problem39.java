@@ -24,7 +24,8 @@ public class Problem39 extends Problem {
         int[] numOfSolutionsForP = new int[max + 1];
         for(int c = 3; c < max / 2; c++) {
             for(int b = 2; b < c; b++) {
-                for(int a = 1; a < b && a + b + c <= max; a++) {
+                for(int a = Math.min(b - 1, max - b - c); a > 0; a--) {
+                //for(int a = 1; a < b && a + b + c <= max; a++) {
                     if(isPythagoreanTriplet(a, b, c))
                         numOfSolutionsForP[a + b + c]++;
                 }
