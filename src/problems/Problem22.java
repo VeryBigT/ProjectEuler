@@ -21,24 +21,24 @@ public class Problem22 extends Problem {
 
     @Override
     public void solve() {
-        String[] names = getNames("src/files/0022_names.txt");
+        String[] names = getWords("src/files/0022_names.txt");
         System.out.println(nameScoreSum(names));
     }
 
     static long nameScoreSum(String[] names) {
         Arrays.sort(names);
         return IntStream.range(0, names.length)
-                .mapToLong(i -> (i + 1) * (long) nameScore(names[i]))
+                .mapToLong(i -> (i + 1) * (long) wordScore(names[i]))
                 .sum();
     }
 
-    static int nameScore(String name) {
+    public static int wordScore(String name) {
         return name.chars()
                 .map(c -> c - 'A' + 1)
                 .sum();
     }
 
-    static String[] getNames(String path) {
+    public static String[] getWords(String path) {
         String names = FileReader.readFileAsString(path);
         return names.substring(1, names.length()-2)
                 .split("(\",\")");
