@@ -27,7 +27,7 @@ public class Problem44 extends Problem {
 
     private static int findD() {
         for(int i = 1; ; i++) {
-            for(int m = i, n = 1; m > 1; m--, n++) {
+            for(int m = i, n = 1; m >= 1; m--, n++) {
                 int pn = p(n);
                 int pnm = p(n+m);
                 if(isPN(pnm - pn) && isPN(pn + pnm))
@@ -51,6 +51,7 @@ public class Problem44 extends Problem {
                 .findFirst().orElse(-1);
     }
 
+    //calculates P_n+m - P_n
     private static int f(int n, int m) {
         return m * (3 * m + 6 * n - 1) / 2;
     }
