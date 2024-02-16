@@ -33,18 +33,17 @@ public class Problem49 extends Problem {
     private static List<String> nDigitPrimePermutations(int n) {
         List<String> result = new ArrayList<>();
         int[] primes = MathUtil.allPrimesSmallerThan(MathUtil.powOfTen(n));
-        int[] finalPrimes = primes;
         int from = IntStream.range(0, primes.length)
-                .filter(i -> finalPrimes[i] > MathUtil.powOfTen(n - 1))
+                .filter(i -> primes[i] > MathUtil.powOfTen(n - 1))
                 .findFirst().orElse(0);
-        primes = Arrays.copyOfRange(primes, from, primes.length);
-        int prime2, prime3;
-        for (int prime1 : primes) {
+        int prime1, prime2, prime3;
+        for(int i = from; i < primes.length; i++) {
+            prime1 = primes[i];
             prime2 = prime1 + 3330;
-            if (Arrays.binarySearch(primes, prime2) < 0 || !arePermutations(prime1, prime2))
+            if(Arrays.binarySearch(primes, prime2) < 0 || !arePermutations(prime1, prime2))
                 continue;
             prime3 = prime2 + 3330;
-            if (Arrays.binarySearch(primes, prime3) > 0 && arePermutations(prime2, prime3))
+            if(Arrays.binarySearch(primes, prime3) > 0 && arePermutations(prime2, prime3))
                 result.add("" + prime1 + prime2 + prime3);
         }
         return result;
