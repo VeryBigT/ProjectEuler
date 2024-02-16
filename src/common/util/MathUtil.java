@@ -1,5 +1,8 @@
 package common.util;
 
+import common.util.collections.CountMap;
+
+import java.util.Map;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -94,5 +97,33 @@ public class MathUtil {
                         .mapToLong(i -> 2L * i + 3).boxed())
                 .mapToLong(i -> i)
                 .toArray();
+    }
+
+    public static int digitMask(int n) {
+        int digitMask = 0;
+        while(n > 0) {
+            int digit = n % 10;
+            digitMask |= 1 << digit;
+            n /= 10;
+        }
+        return digitMask;
+    }
+
+    public static CountMap<Integer> digitMap(int n) {
+        CountMap<Integer> result = new CountMap<>();
+        while(n > 0) {
+            result.add(n % 10);
+            n /= 10;
+        }
+        return result;
+    }
+
+    public static int[] digitArray(int n) {
+        int[] result = new int[10];
+        while(n > 0) {
+            result[n % 10]++;
+            n /= 10;
+        }
+        return result;
     }
 }
