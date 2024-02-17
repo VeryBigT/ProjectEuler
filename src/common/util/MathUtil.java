@@ -126,4 +126,22 @@ public class MathUtil {
         }
         return result;
     }
+
+    public static long binomKofL(int n, int k) {
+        if(k > n - k)
+            k = n - k;
+        long result = 1L;
+        for(int i = 1; i <= k; i++, n--)
+            result = result * n / i;
+        return result;
+    }
+
+    public static int binomKof(int n, int k) {
+        if(k > n - k)
+            k = n - k;
+        int result = 1;
+        for(int i = 1; i <= k; i++, n--)
+            result = result * n / i;
+        return result;
+    }
 }
