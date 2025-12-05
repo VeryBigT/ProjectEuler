@@ -2,20 +2,22 @@ package common;
 
 public abstract class Problem {
     public void run() {
-        long start = startTheClock("Solution:");
+        System.out.println("solution:");
+        long start = System.nanoTime();
         solve();
         endTheClock(start);
     }
 
     public void runSimple() {
-        long start = startTheClock("Simple solution:");
+        System.out.println("simple solution:");
+        long start = System.nanoTime();
         solveSimple();
         endTheClock(start);
     }
 
-    private long startTheClock(String s) {
-        System.out.println(s);
-        return System.nanoTime();
+    public void runDummy() {
+        long start = System.nanoTime();
+        endTheClock(start);
     }
 
     private void endTheClock(long start) {
@@ -32,6 +34,7 @@ public abstract class Problem {
     }
 
     public void runBoth() {
+        runDummy();
         runSimple();
         System.out.println();
         run();  //run hier schneller?!?!
