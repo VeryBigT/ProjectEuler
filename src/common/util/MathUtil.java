@@ -2,7 +2,7 @@ package common.util;
 
 import common.util.collections.CountMap;
 
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -124,6 +124,19 @@ public class MathUtil {
             result[n % 10]++;
             n /= 10;
         }
+        return result;
+    }
+
+    public static int[] digitsArray(int n) {
+        ArrayList<Integer> digits = new ArrayList<>();
+        while(n > 0) {
+            digits.add(n % 10);
+            n /= 10;
+        }
+        int size = digits.size();
+        int[] result = new int[size];
+        for(int i = 0; i < result.length; i++)
+            result[i] = digits.get(size - 1 - i);
         return result;
     }
 
